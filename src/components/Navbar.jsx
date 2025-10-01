@@ -22,6 +22,9 @@ export const Navbar = () => {
             <ul tabIndex={0} className="menu menu-sm dropdown-content bg-primary rounded-box z-10 mt-3 w-52 p-2 shadow">
               <NavLink to="/" className={({isActive}) => isActive ? "text-base border-b-2 border-white" : "hover:text-white hover:scale-105 hover:transition-all text-base"}>Home</NavLink>
               <NavLink to="/apps" className={({isActive}) => isActive ? "text-base border-b-2 border-white" : "hover:text-white hover:scale-105 hover:transition-all text-base"}>Apps</NavLink>
+              {user && (
+                <NavLink to="/MyProfile" className={({isActive}) => isActive ? "text-base border-b-2 border-white" : "hover:text-white hover:scale-105 hover:transition-all text-base"}>My Profile</NavLink>
+              )}
             </ul>
           </div>
      
@@ -32,6 +35,9 @@ export const Navbar = () => {
           <ul className="menu menu-horizontal px-1 space-x-5">
             <NavLink to="/" className={({isActive}) => isActive ? "text-xl border-b-2 border-primary" : "hover:text-primary hover:scale-105 hover:transition-all text-xl"}>Home</NavLink>
             <NavLink to="/apps" className={({isActive}) => isActive ? "text-xl border-b-2 border-primary" : "hover:text-primary hover:scale-105 hover:transition-all text-xl"}>Apps</NavLink>
+            {user && (
+              <NavLink to="/MyProfile" className={({isActive}) => isActive ? "text-xl border-b-2 border-primary" : "hover:text-primary hover:scale-105 hover:transition-all text-xl"}>My Profile</NavLink>
+            )}
           </ul>
         </div>
         
@@ -40,17 +46,20 @@ export const Navbar = () => {
             <span className="loading loading-spinner loading-sm"></span>
           ) : user ? (
             <div className="dropdown dropdown-end">
-              
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img alt={user.displayName} src={user.photoURL || 'https://via.placeholder.com/150'} />
                 </div>
-               
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <li>
+                  <Link to="/MyProfile" className="justify-between">
+                    <span>My Profile</span>
+                  </Link>
+                </li>
+                <li>
                   <div className="justify-between">
-                    <span>{user.displayName}</span>
+                    <span>{user.displayName || user.email}</span>
                   </div>
                 </li>
                 <li><button onClick={handleLogout}>Logout</button></li>
@@ -58,7 +67,6 @@ export const Navbar = () => {
             </div>
           ) : (
             <>
-            
               <Link to="/login" className="btn btn-outline">Login</Link>
             </>
           )}

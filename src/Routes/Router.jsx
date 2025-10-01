@@ -6,6 +6,7 @@ import { Register } from "../pages/Register";
 import { AppDetails } from "../pages/AppDetails";
 import { Apps } from "../pages/Apps";
 import { NotFound } from "../pages/NotFound";
+import { MyProfile } from "../pages/MyProfile";
 import { PrivateRoute } from "../components/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />
+      },
+      {
+        path: "/MyProfile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        )
       },
       {
         path: "/app/:id",
