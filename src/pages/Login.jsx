@@ -58,7 +58,7 @@ export const Login = () => {
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-1 text-sm">
-            <label htmlFor="email" className="block text-gray-600">Email</label>
+            <label htmlFor="email" className="block ">Email</label>
             <input
               type="email"
               name="email"
@@ -72,7 +72,7 @@ export const Login = () => {
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label htmlFor="password" className="block text-gray-600">Password</label>
+            <label htmlFor="password" className="block ">Password</label>
             <input
               type="password"
               name="password"
@@ -84,7 +84,7 @@ export const Login = () => {
               disabled={loginLoading || googleLoading || resetLoading}
               required
             />
-            <div className="flex justify-end text-xs text-gray-600">
+            <div className="flex justify-end text-xs ">
               <button
                 type="button"
                 onClick={handleForgotPassword}
@@ -97,7 +97,7 @@ export const Login = () => {
           </div>
           <button
             type="submit"
-            className="block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600 disabled:opacity-50"
+            className="block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600 hover:bg-violet-400 cursor-pointer disabled:opacity-50"
             disabled={loginLoading || googleLoading || resetLoading}
           >
             {loginLoading ? (
@@ -112,7 +112,7 @@ export const Login = () => {
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
-          <p className="px-3 text-sm text-gray-600">Login with social accounts</p>
+          <p className="px-3 text-sm ">Login with social accounts</p>
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
         </div>
         <div className="flex justify-center space-x-4">
@@ -120,7 +120,7 @@ export const Login = () => {
             onClick={handleGoogleLogin}
             disabled={loginLoading || googleLoading || resetLoading}
             aria-label="Log in with Google"
-            className="p-3 rounded-sm disabled:opacity-50"
+            className="p-3 rounded-sm disabled:opacity-50 cursor-pointer"
           >
             {googleLoading ? (
               <span className="loading loading-spinner loading-sm"></span>
@@ -131,9 +131,9 @@ export const Login = () => {
             )}
           </button>
         </div>
-        <p className="text-xs text-center sm:px-6 text-gray-600">
+        <p className="text-xs text-center sm:px-6 ">
           Don't have an account?{' '}
-          <Link to="/register" className="underline text-gray-800">
+          <Link to="/register" className="underline ">
             Sign up
           </Link>
         </p>
