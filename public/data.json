@@ -1,0 +1,278 @@
+[
+  {
+    "id": "app002",
+    "name": "Call of Duty",
+    "developer": "Activision Publishing, Inc.",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.64815.13510798887669283.a09e2432-94cb-486e-8f85-35942b7a329f.69f04ea9-e152-4d43-952b-458a3423c1d2?w=112",
+    "banner": "https://store-images.s-microsoft.com/image/apps.32997.13966330883349940.04429733-dfe9-4aac-bee6-505b6bbb4f65.7ec324b4-3c5b-4ba1-a015-87f421213d90",
+    "downloads": 500000000,
+    "category": "Games",
+    "rating": 4.7,
+    "description": "Experience the thrill of the world's most beloved shooter game, now on your phone for on-the-go fun with console-quality HD graphics.",
+    "features": [
+      "Iconic multiplayer maps and modes",
+      "100-player Battle Royale",
+      "Constantly evolving seasonal content"
+    ],
+    "reviews": [
+      {
+        "user": "pro_gamer_snipez",
+        "rating": 5,
+        "comment": "Fast-paced action and great graphics. The best mobile FPS!"
+      }
+    ]
+  },
+  {
+    "id": "app005",
+    "name": "Netflix",
+    "developer": "Netflix, Inc.",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.56161.9007199266246365.1d5a6a53-3c49-4f80-95d7-78d76b0e05d0.a3e87fea-e03e-4c0a-8f26-9ecef205fa7b?h=210",
+    "banner": "https://store-images.s-microsoft.com/image/apps.35069.9007199266246365.888608e8-85f2-4a52-90d3-72591ee2777e.02ca600e-d925-4cc5-9454-6f5a6de0aab8",
+    "downloads": 1000000000,
+    "category": "Entertainment",
+    "rating": 4.5,
+    "description": "Watch TV shows and movies recommended just for you, including award-winning Netflix original series, films, and documentaries.",
+    "features": [
+      "Download shows to watch offline",
+      "Watch on multiple devices",
+      "Personalized profiles for everyone"
+    ],
+    "reviews": [
+      {
+        "user": "binge_watcher_01",
+        "rating": 5,
+        "comment": "The best original content out there. Can't live without it!"
+      }
+    ]
+  },
+  {
+    "id": "app007",
+    "name": "PUBG",
+    "developer": "Krafton, Inc.",
+    "thumbnail": "https://img.utdstc.com/icon/ad3/e98/ad3e98abe9de44760d7dfe5f65cd833bd059c163c3cdbe5a8703c2e35a5bb02f:100",
+    "banner": "https://img.utdstc.com/screen/cef/00a/cef00a9f7e414edd70017765c3f12b09d46ef43d9396e8757a610f8670ed2bab:800",
+    "downloads": 750000000,
+    "category": "Games",
+    "rating": 4.4,
+    "description": "Drop into a massive battleground and fight to be the last one standing. Squad up and join the battle in this landmark battle royale game.",
+    "features": [
+      "100-player classic mode",
+      "Realistic graphics and HD audio",
+      "Massive and detailed maps"
+    ],
+    "reviews": [
+      {
+        "user": "WinnerWinnerCD",
+        "rating": 4,
+        "comment": "The original and still one of the best battle royale experiences."
+      }
+    ]
+  },
+  {
+    "id": "app010",
+    "name": "Disney+",
+    "developer": "Disney",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.14187.14495311847124170.7646206e-bd82-4cf0-8b8c-d06a67bc302c.2e474878-acb7-4afb-a503-c2a1a32feaa8?h=115",
+    "banner": "https://store-images.s-microsoft.com/image/apps.38503.14495311847124170.4dfc5199-af6f-4def-8e48-340ccf8208b2.6d5adb61-4c5f-485f-80a9-1917d0e1d201",
+    "downloads": 350000000,
+    "category": "Entertainment",
+    "rating": 4.5,
+    "description": "The streaming home of your favorite stories. With unlimited entertainment from Disney, Pixar, Marvel, Star Wars, and National Geographic, there's always something exciting to watch.",
+    "features": [
+      "Endless entertainment from Disney, Pixar, Marvel, etc.",
+      "Download any movie or series",
+      "Host virtual movie nights with GroupWatch"
+    ],
+    "reviews": [
+      {
+        "user": "MarvelFan2025",
+        "rating": 5,
+        "comment": "The best place for all Marvel and Star Wars content. A must-have for any fan!"
+      }
+    ]
+  },
+  {
+    "id": "app012",
+    "name": "Angry Birds",
+    "developer": "Rovio Entertainment",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.51239.14410076060135429.789f7faf-f4d8-407c-9f5d-fcd1a0a41a33.b300690e-4bcc-4bd7-8ff1-711249747e44?w=112",
+    "banner": "https://store-images.s-microsoft.com/image/apps.60018.14410076060135429.789f7faf-f4d8-407c-9f5d-fcd1a0a41a33.2c547aba-be9b-47d5-8af4-c536fa4646be?h=253",
+    "downloads": 500000000,
+    "category": "Games",
+    "rating": 4.6,
+    "description": "The classic physics-based puzzler that started it all. Use the unique powers of the Angry Birds to destroy the greedy pigs' defenses!",
+    "features": [
+      "Challenging physics-based gameplay",
+      "Hundreds of fun levels",
+      "Iconic and lovable characters"
+    ],
+    "reviews": [
+      {
+        "user": "slingshot_master",
+        "rating": 5,
+        "comment": "A true classic. Still as fun and addictive as the day it came out."
+      }
+    ]
+  },
+  {
+    "id": "app015",
+    "name": "YouTube",
+    "developer": "Google LLC",
+    "thumbnail": "https://play-lh.googleusercontent.com/6am0i3walYwNLc08QOOhRJttQENNGkhlKajXSERf3JnPVRQczIyxw2w3DxeMRTOSdsY=s48-rw",
+    "banner": "https://i.ytimg.com/vi/__NeP0RqACU/hqdefault.jpg",
+    "downloads": 5000000000,
+    "category": "Entertainment",
+    "rating": 4.6,
+    "description": "Discover what the world is watching -- from the hottest music videos to what’s popular in gaming, fashion, beauty, news, learning and more.",
+    "features": [
+      "Subscribe to your favorite channels",
+      "Create and upload your own videos",
+      "Explore a vast library of content"
+    ],
+    "reviews": [
+      {
+        "user": "DailyVlogger123",
+        "rating": 5,
+        "comment": "The home of online video. There's something for everyone."
+      }
+    ]
+  },
+  {
+    "id": "app017",
+    "name": "Minecraft",
+    "developer": "Mojang Studios",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.17382.13510798885735219.9735d495-578c-4a4c-b892-3eb3a780b3a0.d3792486-cf98-40c0-a2c1-d6443f0e2b70?q=90&w=177&h=265",
+    "banner": "https://store-images.s-microsoft.com/image/apps.40856.13510798885735219.85bdba62-631e-4ad9-9829-189064a9ffee.4eefc6c0-8a38-4a23-b219-547fcc435d17",
+    "downloads": 200000000,
+    "category": "Games",
+    "rating": 4.8,
+    "description": "Explore infinite worlds and build everything from the simplest of homes to the grandest of castles. Play in creative mode or mine deep in survival mode.",
+    "features": [
+      "Infinite sandbox world",
+      "Creative and Survival modes",
+      "Cross-platform play"
+    ],
+    "reviews": [
+      {
+        "user": "BlockBuilder_Alex",
+        "rating": 5,
+        "comment": "Limitless creativity. I've spent thousands of hours in this game."
+      }
+    ]
+  },
+  {
+    "id": "app020",
+    "name": "Prime Video",
+    "developer": "Amazon Mobile LLC",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.10868.14618985536919905.3e754390-a812-43d7-87fc-335159cd867b.7ac7b808-a1dc-4506-9f15-9a078832fddf?h=115",
+    "banner": "https://store-images.s-microsoft.com/image/apps.16285.14618985536919905.552c0017-6644-49a8-8467-8f7b34ce0428.30ad6b05-16d9-4d5e-a242-43107708a16a",
+    "downloads": 500000000,
+    "category": "Entertainment",
+    "rating": 4.4,
+    "description": "Watch movies, TV, and sports, including Amazon Originals like The Boys, The Marvelous Mrs. Maisel, and Tom Clancy’s Jack Ryan.",
+    "features": [
+      "Rent or buy new-release movies",
+      "Multi-user profiles",
+      "Download videos to watch offline"
+    ],
+    "reviews": [
+      {
+        "user": "prime_member_22",
+        "rating": 4,
+        "comment": "Great selection of original shows and movies included with Prime."
+      }
+    ]
+  },
+  {
+    "id": "app021",
+    "name": "Duolingo",
+    "developer": "Duolingo",
+    "thumbnail": "https://store-images.s-microsoft.com/image/apps.38456.9007199267003607.4d66cde1-46fd-42b7-93c7-e05d782f5e5d.cfdf91f5-dc2a-4178-96fa-d2c156ae62cd?h=115",
+    "banner": "https://store-images.microsoft.com/image/apps.50697.9007199267003607.a29c1b12-e912-46f2-b759-dfa1cc7b02b1.0a427b94-3101-4b10-b5de-c19e692366ec?h=720",
+    "downloads": 500000000,
+    "category": "Education",
+    "rating": 4.7,
+    "description": "Learn a new language with the world's #1 education app. Fun, bite-sized lessons make it easy to start learning over 40 languages.",
+    "features": [
+      "Gamified lessons",
+      "Personalized learning paths",
+      "Reading, writing, and speaking exercises"
+    ],
+    "reviews": [
+      {
+        "user": "polyglot_paul",
+        "rating": 5,
+        "comment": "The best way to learn a language for free. The competitive leagues keep me motivated!"
+      }
+    ]
+  },
+  {
+    "id": "app022",
+    "name": "Khan Academy",
+    "developer": "Khan Academy",
+    "thumbnail": "https://cdn-1.webcatalog.io/catalog/khan-academy/khan-academy-social-preview.png?v=1751851530180",
+    "banner": "https://cdn.kastatic.org/images/downloads-page/DownloadsHeroPhoto.png",
+    "downloads": 100000000,
+    "category": "Education",
+    "rating": 4.6,
+    "description": "Learn anything, for free. Thousands of interactive exercises, videos, and articles at your fingertips. Study math, science, economics, and more.",
+    "features": [
+      "Vast learning library for all ages",
+      "Personalized learning dashboard",
+      "Bookmark and download content for offline access"
+    ],
+    "reviews": [
+      {
+        "user": "math_whiz_kid",
+        "rating": 5,
+        "comment": "This app is a lifesaver. It helped me understand calculus better than my textbook."
+      }
+    ]
+  },
+  {
+    "id": "app023",
+    "name": "Coursera",
+    "developer": "Coursera",
+    "thumbnail": "https://cdn-1.webcatalog.io/catalog/coursera/coursera-icon-filled-256.webp?v=1754872761093",
+    "banner": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/00atxywtfxvd/2gChXpyTrOhqnUi2prKyuW/8f13a4cc2eb26d2a8c9f876de0f8ac0e/BC-4874_LOHP_takeover_Non-NAMER_30-_off-Limited_time_Desktop-720x500.png?auto=format%2Ccompress&dpr=1&w=1440&h=1000&q=40",
+    "downloads": 50000000,
+    "category": "Education",
+    "rating": 4.8,
+    "description": "Build skills with courses, certificates, and degrees online from world-class universities and companies like Google, IBM, and more.",
+    "features": [
+      "Courses from 200+ top universities and companies",
+      "Earn recognized Professional Certificates",
+      "Flexible online learning on your schedule"
+    ],
+    "reviews": [
+      {
+        "user": "career_changer_cathy",
+        "rating": 5,
+        "comment": "The Google Data Analytics certificate I earned here helped me land a new job. Truly life-changing."
+      }
+    ]
+  },
+  {
+    "id": "app024",
+    "name": "Quizlet",
+    "developer": "Quizlet, Inc.",
+    "thumbnail": "https://images.sftcdn.net/images/t_app-icon-s/p/c4c941e0-c5c8-4bb3-bf34-286e3ecd99dc/500219417/quizlet-i.png",
+    "banner": "https://images.prismic.io/quizlet-web/ZpWfEh5LeNNTxK_T_study-guides-image.png?auto=format,compress",
+    "downloads": 100000000,
+    "category": "Education",
+    "rating": 4.7,
+    "description": "Learn with flashcards, games, and expert-written solutions. Quizlet is the easiest way to practice and master what you’re learning.",
+    "features": [
+      "Create your own flashcards or find existing ones",
+      "Different study modes like Learn and Test",
+      "Expert solutions for textbook problems"
+    ],
+    "reviews": [
+      {
+        "user": "med_student_mike",
+        "rating": 5,
+        "comment": "I wouldn't have survived my anatomy exams without Quizlet. The flashcards are essential for memorization."
+      }
+    ]
+  }
+]
