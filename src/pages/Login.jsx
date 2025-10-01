@@ -7,7 +7,8 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
-  const { login, googleLogin } = useAuth();
+  const [resetLoading, setResetLoading] = useState(false);
+  const { login, googleLogin, resetPassword } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -35,13 +36,29 @@ export const Login = () => {
     }
   };
 
+  const handleForgotPassword = async () => {
+    if (!email) {
+      alert('Please enter your email address first');
+      return;
+    }
+    
+    setResetLoading(true);
+    try {
+      await resetPassword(email);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setResetLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
-      <div className="w-full max-w-md p-8 space-y-3 rounded-xl border border-white text-white shadow-xl shadow-white/20">
+      <div className="w-full max-w-md p-8 space-y-3 rounded-xl border border-white shadow-xl shadow-white/20">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-1 text-sm">
-            <label htmlFor="email" className="block text-white">Email</label>
+            <label htmlFor="email" className="block text-gray-600">Email</label>
             <input
               type="email"
               name="email"
@@ -50,12 +67,12 @@ export const Login = () => {
               className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              disabled={loginLoading || googleLoading}
+              disabled={loginLoading || googleLoading || resetLoading}
               required
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label htmlFor="password" className="block text-white">Password</label>
+            <label htmlFor="password" className="block text-gray-600">Password</label>
             <input
               type="password"
               name="password"
@@ -64,14 +81,24 @@ export const Login = () => {
               className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              disabled={loginLoading || googleLoading}
+              disabled={loginLoading || googleLoading || resetLoading}
               required
             />
+            <div className="flex justify-end text-xs text-gray-600">
+              <button
+                type="button"
+                onClick={handleForgotPassword}
+                disabled={loginLoading || googleLoading || resetLoading}
+                className="hover:underline disabled:opacity-50"
+              >
+                {resetLoading ? 'Sending...' : 'Forgot Password?'}
+              </button>
+            </div>
           </div>
           <button
             type="submit"
             className="block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600 disabled:opacity-50"
-            disabled={loginLoading || googleLoading}
+            disabled={loginLoading || googleLoading || resetLoading}
           >
             {loginLoading ? (
               <div className="flex items-center justify-center gap-2">
@@ -85,15 +112,15 @@ export const Login = () => {
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
-          <p className="px-3 text-sm text-white">Login with social accounts</p>
+          <p className="px-3 text-sm text-gray-600">Login with social accounts</p>
           <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
         </div>
         <div className="flex justify-center space-x-4">
           <button
             onClick={handleGoogleLogin}
-            disabled={loginLoading || googleLoading}
+            disabled={loginLoading || googleLoading || resetLoading}
             aria-label="Log in with Google"
-            className="p-3 rounded-sm disabled:opacity-50 cursor-pointer"
+            className="p-3 rounded-sm disabled:opacity-50"
           >
             {googleLoading ? (
               <span className="loading loading-spinner loading-sm"></span>
@@ -104,9 +131,9 @@ export const Login = () => {
             )}
           </button>
         </div>
-        <p className="text-xs text-center sm:px-6 text-white">
+        <p className="text-xs text-center sm:px-6 text-gray-600">
           Don't have an account?{' '}
-          <Link to="/register" className="underline ">
+          <Link to="/register" className="underline text-gray-800">
             Sign up
           </Link>
         </p>
