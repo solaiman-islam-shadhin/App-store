@@ -33,11 +33,9 @@ export const AppDetails = () => {
         setLoading(false);
       });
 
-    // Check if app is currently installed
     const installedApps = JSON.parse(localStorage.getItem('installedApps') || '[]');
     setIsInstalled(installedApps.includes(id));
 
-    // Check if app was ever installed (for review eligibility)
     const everInstalledApps = JSON.parse(localStorage.getItem('everInstalledApps') || '[]');
     setHasEverInstalled(everInstalledApps.includes(id));
   }, [id]);
@@ -50,8 +48,6 @@ export const AppDetails = () => {
     }
 
     setSubmittingReview(true);
-    
-    // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     const review = {
@@ -70,26 +66,21 @@ export const AppDetails = () => {
 
   const handleInstall = async () => {
     setInstalling(true);
-    
-    // Simulate installation delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
     const installedApps = JSON.parse(localStorage.getItem('installedApps') || '[]');
     const everInstalledApps = JSON.parse(localStorage.getItem('everInstalledApps') || '[]');
     
     if (isInstalled) {
-      // Uninstall
       const updatedApps = installedApps.filter(appId => appId !== id);
       localStorage.setItem('installedApps', JSON.stringify(updatedApps));
       setIsInstalled(false);
       toast.success(`${app.name} uninstalled successfully!`);
     } else {
-      // Install
       installedApps.push(id);
       localStorage.setItem('installedApps', JSON.stringify(installedApps));
       setIsInstalled(true);
       
-      // Mark as ever installed for review eligibility
       if (!everInstalledApps.includes(id)) {
         everInstalledApps.push(id);
         localStorage.setItem('everInstalledApps', JSON.stringify(everInstalledApps));
@@ -122,97 +113,116 @@ export const AppDetails = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="hero bg-base-200 rounded-2xl mb-8">
-        <div className="hero-content flex-col lg:flex-row">
-          <img src={app.banner || app.thumbnail} className="max-w-sm rounded-lg shadow-2xl" alt={app.name} />
-          <div>
-            <h1 className="text-5xl font-bold">{app.name}</h1>
-            <p className="text-xl text-base-content/70 mb-2">{app.developer}</p>
-            <div className="flex items-center gap-4 mb-4">
-              <span className="text-lg font-semibold">⭐ {app.rating}</span>
-              <span>📥 {app.downloads > 1000000 ? `${(app.downloads/1000000).toFixed(1)}M` : `${(app.downloads/1000).toFixed(0)}K`} downloads</span>
-              <div className="badge badge-primary badge-lg">{app.category}</div>
+    <div className="min-h-screen bg-black">
+      <div className="container mx-auto px-4 py-8">
+        {/* App Header - Responsive */}
+        <div className="bg-white rounded-2xl shadow-lg mb-8 overflow-hidden">
+          <div className="flex flex-col lg:flex-row">
+            <div className="lg:w-1/3 p-6 flex justify-center">
+              <img
+                src={app.banner || app.thumbnail}
+                className="w-full max-w-sm rounded-lg shadow-xl"
+                alt={app.name}
+              />
             </div>
-            <button 
-              onClick={handleInstall} 
-              className={`btn btn-lg ${isInstalled ? 'btn-error' : 'btn-primary'}`}
-              disabled={installing}
-            >
-              {installing ? (
-                <>
-                  <span className="loading loading-spinner loading-sm"></span>
-                  {isInstalled ? 'Uninstalling...' : 'Installing...'}
-                </>
-              ) : (
-                isInstalled ? '🗑️ Uninstall' : '📱 Install'
-              )}
-            </button>
+            <div className="lg:w-2/3 p-6">
+              <h1 className="text-3xl lg:text-5xl font-bold mb-4 text-primary">{app.name}</h1>
+              <p className="text-lg lg:text-xl text-gray-600 mb-4 ">{app.developer}</p>
+              <div className="flex flex-wrap items-center gap-4 mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow-500 text-xl">⭐</span>
+                  <span className="text-lg font-semibold text-primary">{app.rating}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-blue-500 text-xl">📥</span>
+                  <span className='text-primary'>{app.downloads > 1000000 ? `${(app.downloads/1000000).toFixed(1)}M` : `${(app.downloads/1000).toFixed(0)}K`} downloads</span>
+                </div>
+                <div className="badge badge-primary badge-lg text-white">{app.category}</div>
+              </div>
+              <button 
+                onClick={handleInstall} 
+                className={`btn btn-lg w-full lg:w-auto ${isInstalled ? 'btn-error' : 'btn-primary'}`}
+                disabled={installing}
+              >
+                {installing ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm bg-primary"></span>
+                    {isInstalled ? 'Uninstalling...' : 'Installing...'}
+                  </>
+                ) : (
+                  isInstalled ? 'Uninstall' : 'Install'
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Description</h2>
-            <p className="text-base-content/80 leading-relaxed">{app.description}</p>
-          </section>
+        {/* Content Grid - Responsive */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <div className="xl:col-span-2 space-y-8">
+            {/* Description */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-2xl font-bold mb-4 text-primary">Description</h2>
+              <p className="text-black leading-relaxed">{app.description}</p>
+            </div>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Features</h2>
-            <ul className="list-disc list-inside space-y-2">
-              {app.features.map((feature, index) => (
-                <li key={index} className="text-base-content/80">{feature}</li>
-              ))}
-            </ul>
-          </section>
+            {/* Features */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-2xl font-bold mb-4 text-primary">Features</h2>
+              <ul className="space-y-3">
+                {app.features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">✓</span>
+                    <span className="text-black">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <section>
-            <h2 className="text-2xl font-bold mb-6">Reviews</h2>
-            
-            <div className="card bg-base-100 shadow-xl mb-6">
-              <div className="card-body">
-                <h3 className="card-title">Submit a Review</h3>
+            {/* Reviews Section */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary">Reviews & Ratings</h2>
+              
+              {/* Submit Review Form */}
+              <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 className="text-lg font-semibold mb-4 text-primary">Write a Review</h3>
                 {!hasEverInstalled && (
                   <div className="alert alert-warning mb-4">
                     <span>⚠️ You must install the app at least once to submit a review</span>
                   </div>
                 )}
-                <form onSubmit={handleReviewSubmit}>
-                  <div className="form-control mb-4">
-                    <label className="label">
-                      <span className="label-text">Review</span>
-                    </label>
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-black mb-2">Your Review</label>
                     <textarea
-                      className="textarea textarea-bordered h-24"
-                      placeholder="Write your review here..."
+                      className="w-full px-4 py-3 border  border-gray-300 rounded-lg text-black"
+                      rows="4"
+                      placeholder="Share your experience with this app..."
                       value={newReview.comment}
                       onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
                       disabled={!hasEverInstalled || submittingReview}
                       required
-                    ></textarea>
+                    />
                   </div>
-                  <div className="form-control mb-4">
-                    <label className="label">
-                      <span className="label-text">Rating</span>
-                    </label>
+                  <div>
+                    <label className="block text-sm font-medium text-black mb-2">Rating</label>
                     <select
-                      className="select select-bordered"
+                      className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       value={newReview.rating}
                       onChange={(e) => setNewReview({...newReview, rating: e.target.value})}
                       disabled={!hasEverInstalled || submittingReview}
                     >
-                      <option value={5}>5 Stars</option>
-                      <option value={4}>4 Stars</option>
-                      <option value={3}>3 Stars</option>
-                      <option value={2}>2 Stars</option>
-                      <option value={1}>1 Star</option>
+                      <option value={5}>⭐⭐⭐⭐⭐ (5 stars)</option>
+                      <option value={4}>⭐⭐⭐⭐ (4 stars)</option>
+                      <option value={3}>⭐⭐⭐ (3 stars)</option>
+                      <option value={2}>⭐⭐ (2 stars)</option>
+                      <option value={1}>⭐ (1 star)</option>
                     </select>
                   </div>
                   <button 
                     type="submit" 
-                    className="btn btn-primary" 
+                    className="btn btn-primary w-full lg:w-auto" 
                     disabled={!hasEverInstalled || submittingReview}
                   >
                     {submittingReview ? (
@@ -226,25 +236,81 @@ export const AppDetails = () => {
                   </button>
                 </form>
               </div>
-            </div>
 
-            <div className="space-y-4">
-              {reviews.map((review) => (
-                <div key={review.id || review.user} className="card bg-base-100 shadow-lg">
-                  <div className="card-body">
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-semibold">{review.user}</h4>
-                      <div className="flex items-center gap-2">
-                        <span>⭐ {review.rating}</span>
-                        <span className="text-sm text-base-content/70">{review.date || 'Today'}</span>
-                      </div>
-                    </div>
-                    <p className="text-base-content/80">{review.comment}</p>
+              {/* Reviews List - Redesigned */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-primary">User Reviews ({reviews.length})</h3>
+                {reviews.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    <p>No reviews yet. Be the first to review this app!</p>
                   </div>
-                </div>
-              ))}
+                ) : (
+                  <div className="space-y-4">
+                    {reviews.map((review) => (
+                      <div key={review.id || review.user} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                          <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                              {review.user.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-gray-900">{review.user}</h4>
+                              <p className="text-sm text-gray-500">{review.date || 'Today'}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, i) => (
+                              <span key={i} className={`text-lg ${i < review.rating ? 'text-yellow-500' : 'text-gray-300'}`}>
+                                ⭐
+                              </span>
+                            ))}
+                            <span className="ml-2 text-sm font-medium text-gray-600">({review.rating}/5)</span>
+                          </div>
+                        </div>
+                        <p className="text-black leading-relaxed">{review.comment}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </section>
+          </div>
+
+          {/* Sidebar */}
+          <div className="xl:col-span-1">
+            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4">
+              <div className="text-center mb-6">
+                <img
+                  src={app.thumbnail}
+                  alt={app.name}
+                  className="w-24 h-24 mx-auto rounded-xl mb-4"
+                />
+                <h3 className="font-bold text-lg text-primary">{app.name}</h3>
+                <p className="text-gray-600">{app.developer}</p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Rating</span>
+                  <span className="font-semibold text-primary">{app.rating}/5 ⭐</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Downloads</span>
+                  <span className="font-semibold text-primary">{app.downloads > 1000000 ? `${(app.downloads/1000000).toFixed(1)}M` : `${(app.downloads/1000).toFixed(0)}K`}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Category</span>
+                  <span className="font-semibold text-primary">{app.category}</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-gray-600">Status</span>
+                  <span className={`font-semibold ${isInstalled ? 'text-green-600' : 'text-gray-500'}`}>
+                    {isInstalled ? 'Installed' : 'Not Installed'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
