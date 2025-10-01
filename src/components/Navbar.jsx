@@ -24,7 +24,8 @@ export const Navbar = () => {
               <NavLink to="/apps" className={({isActive}) => isActive ? "text-base border-b-2 border-white" : "hover:text-white hover:scale-105 hover:transition-all text-base"}>Apps</NavLink>
             </ul>
           </div>
-          <Link to="/" className="text-xl lg:text-3xl font-bold">App Store</Link>
+     
+          <Link to="/" className="text-xl lg:text-2xl font-bold">App Store</Link>
         </div>
         
         <div className="navbar-center hidden lg:flex">
