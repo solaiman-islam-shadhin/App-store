@@ -11,6 +11,7 @@ export const AppDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [newReview, setNewReview] = useState({ comment: '', rating: 5 });
   const [isInstalled, setIsInstalled] = useState(false);
+  const [hasEverInstalled, setHasEverInstalled] = useState(false);
   const [loading, setLoading] = useState(true);
   const [installing, setInstalling] = useState(false);
   const [submittingReview, setSubmittingReview] = useState(false);
@@ -32,9 +33,13 @@ export const AppDetails = () => {
         setLoading(false);
       });
 
-    // Check if app is installed
+    // Check if app is currently installed
     const installedApps = JSON.parse(localStorage.getItem('installedApps') || '[]');
     setIsInstalled(installedApps.includes(id));
+
+    // Check if app was ever installed (for review eligibility)
+    const everInstalledApps = JSON.parse(localStorage.getItem('everInstalledApps') || '[]');
+    setHasEverInstalled(everInstalledApps.includes(id));
   }, [id]);
 
   const handleReviewSubmit = async (e) => {
@@ -70,6 +75,7 @@ export const AppDetails = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     const installedApps = JSON.parse(localStorage.getItem('installedApps') || '[]');
+    const everInstalledApps = JSON.parse(localStorage.getItem('everInstalledApps') || '[]');
     
     if (isInstalled) {
       // Uninstall
@@ -82,6 +88,14 @@ export const AppDetails = () => {
       installedApps.push(id);
       localStorage.setItem('installedApps', JSON.stringify(installedApps));
       setIsInstalled(true);
+      
+      // Mark as ever installed for review eligibility
+      if (!everInstalledApps.includes(id)) {
+        everInstalledApps.push(id);
+        localStorage.setItem('everInstalledApps', JSON.stringify(everInstalledApps));
+        setHasEverInstalled(true);
+      }
+      
       toast.success(`${app.name} installed successfully!`);
     }
     
@@ -160,9 +174,9 @@ export const AppDetails = () => {
             <div className="card bg-base-100 shadow-xl mb-6">
               <div className="card-body">
                 <h3 className="card-title">Submit a Review</h3>
-                {!isInstalled && (
+                {!hasEverInstalled && (
                   <div className="alert alert-warning mb-4">
-                    <span>⚠️ You must install the app first to submit a review</span>
+                    <span>⚠️ You must install the app at least once to submit a review</span>
                   </div>
                 )}
                 <form onSubmit={handleReviewSubmit}>
@@ -175,7 +189,7 @@ export const AppDetails = () => {
                       placeholder="Write your review here..."
                       value={newReview.comment}
                       onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
-                      disabled={!isInstalled || submittingReview}
+                      disabled={!hasEverInstalled || submittingReview}
                       required
                     ></textarea>
                   </div>
@@ -187,7 +201,7 @@ export const AppDetails = () => {
                       className="select select-bordered"
                       value={newReview.rating}
                       onChange={(e) => setNewReview({...newReview, rating: e.target.value})}
-                      disabled={!isInstalled || submittingReview}
+                      disabled={!hasEverInstalled || submittingReview}
                     >
                       <option value={5}>5 Stars</option>
                       <option value={4}>4 Stars</option>
@@ -199,7 +213,7 @@ export const AppDetails = () => {
                   <button 
                     type="submit" 
                     className="btn btn-primary" 
-                    disabled={!isInstalled || submittingReview}
+                    disabled={!hasEverInstalled || submittingReview}
                   >
                     {submittingReview ? (
                       <>
